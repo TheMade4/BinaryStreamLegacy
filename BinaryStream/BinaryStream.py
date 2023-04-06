@@ -28,6 +28,13 @@ class BinaryStreamRead:
 	def uint16(self):
 		return struct.unpack("!H", self.read(2))[0]
 	
+	def int24(self):
+		data = self.read(3)
+		return struct.unpack("!i", (b"\x00" if data[2] < 0x80 else b"\xff") + data)[0]
+	
+	def uint24(self):
+		return struct.unpack("!I", b"\x00"+self.read(3))[0]
+	
 	def int32(self):
 		return struct.unpack("!i", self.read(4))[0]
 	
@@ -74,6 +81,12 @@ class BinaryStreamWrite:
 	
 	def uint16(self, val):
 		self.write(struct.pack("!H", val))
+	
+	def int24(self, val):
+		self.write(struct.pack("!i", val)[1:])
+	
+	def uint24(self, val):
+		self.write(struct.pack("!I", val)[1:])
 	
 	def int32(self, val):
 		self.write(struct.pack("!i", val))
