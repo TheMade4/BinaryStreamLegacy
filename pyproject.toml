@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "BinaryStream"
+name = "binary-stream"
 version = "0.1.2"
 description = "BinaryStream libary for python (support only big-endian stream)"
 authors = ["TheMade4"]
