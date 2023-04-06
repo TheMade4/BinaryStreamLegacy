@@ -1,19 +1,6 @@
 import struct
 
 
-
-"""
-
-COMING SOON
-
-
-class SizeError(Exception):
-	def __init__(self, type, min, max):
-		super().__init__(f"Value for type '{type}'' should be in the range of {min} - {max}.")
-
-"""
-
-
 class BinaryStreamRead:
 	def __init__(self, data):
 		self.buffer = data
@@ -111,39 +98,3 @@ class BinaryStreamWrite:
 	
 	def bool(self, val):
 		self.write(struct.pack("!?", val))
-
-
-"""
-
-DEBUG
-
-s = BinaryStreamWrite()
-s.int8(-7)
-s.uint8(7)
-s.int16(-7)
-s.uint16(7)
-s.int32(-7)
-s.uint32(7)
-s.int64(-7)
-s.uint64(7)
-s.float16(7.7)
-s.float32(7.7)
-s.float64(7.7)
-s.bool(True)
-
-print(s.read())
-
-s = BinaryStreamRead(s.read())
-print(s.int8())
-print(s.uint8())
-print(s.int16())
-print(s.uint16())
-print(s.int32())
-print(s.uint32())
-print(s.int64())
-print(s.uint64())
-print(s.float16())
-print(s.float32())
-print(s.float64())
-print(s.bool())
-"""
