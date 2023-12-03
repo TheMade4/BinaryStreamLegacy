@@ -9,11 +9,11 @@ class BinaryStreamRead:
 	def seek(self, pos):
 		self.pos = pos
 	
-	def read(self, lenght=-1):
-		if lenght < 0:
-			lenght = len(self.buffer)-self.pos
-		data = self.buffer[self.pos:self.pos+lenght]
-		self.pos += lenght
+	def read(self, length=-1):
+		if length < 0:
+			length = len(self.buffer)-self.pos
+		data = self.buffer[self.pos:self.pos+length]
+		self.pos += length
 		return data
 	
 	def int8(self):
